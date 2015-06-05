@@ -15,8 +15,11 @@
 *.exe
 *.xml
 *.log
+*.
 
 
 # Files
 obj/
 bin/
+packages/
+build/

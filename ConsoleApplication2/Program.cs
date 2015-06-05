@@ -48,12 +48,12 @@ namespace ConsoleApplication2
 
         private static string SocketSendReceive(string server, int port)
         {
-            string request = @"<?xml version=""1.0"" encoding=""ISO-8859-1"" ?>
+            string request = string.Format(@"<?xml version=""1.0"" encoding=""ISO-8859-1"" ?>
 <out>
 	<head>
 		<Version>1.0.1</Version>		
 		<AnsTranCode>BJCEBRWKRes</AnsTranCode>
-		<TrmSeqNum>201506040000000001</TrmSeqNum>
+		<TrmSeqNum>{0}</TrmSeqNum>
         <InstId>商户编号test</InstId>
 	</head>
 <tout>
@@ -61,7 +61,7 @@ namespace ConsoleApplication2
 <TAG2>VALUE2</TAG2>
 </tout>
 </out>
-";
+", DateTime.Now.ToString("yyyyMMdd") + "0000000001");
             var length = Encoding.GetEncoding("GBK").GetByteCount(request).ToString().PadLeft(6, '0');
             var bytesSent = Encoding.GetEncoding("GBK").GetBytes((length + request));
             Byte[] bytesReceived = new Byte[256];
