@@ -1,10 +1,4 @@
-ï»¿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Xml.Linq;
-using LW.NSocket.Client;
+using System;
 using LW.NSocket.Server;
 using LW.NSocket.Server.Command;
 using LW.NSocket.SocketBase;
@@ -19,7 +13,7 @@ namespace LW.NGSSocketServer
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         /// <summary>
-        /// å½“è¿æ¥æ—¶ä¼šè°ƒç”¨æ­¤æ–¹æ³•
+        /// µ±Á¬½ÓÊ±»áµ÷ÓÃ´Ë·½·¨
         /// </summary>
         /// <param name="connection"></param>
         public override void OnConnected(IConnection connection)
@@ -30,7 +24,7 @@ namespace LW.NGSSocketServer
 
         }
         /// <summary>
-        /// å½“è¿æ¥æ–­å¼€æ—¶ä¼šè°ƒç”¨æ­¤æ–¹æ³•
+        /// µ±Á¬½Ó¶Ï¿ªÊ±»áµ÷ÓÃ´Ë·½·¨
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="ex"></param>
@@ -44,7 +38,7 @@ namespace LW.NGSSocketServer
 
         }
         /// <summary>
-        /// å½“å‘ç”Ÿé”™è¯¯æ—¶ä¼šè°ƒç”¨æ­¤æ–¹æ³•
+        /// µ±·¢Éú´íÎóÊ±»áµ÷ÓÃ´Ë·½·¨
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="ex"></param>
@@ -56,7 +50,7 @@ namespace LW.NGSSocketServer
             _logger.Error().Message(ex.ToString()).Property("ClientIP", connection.RemoteEndPoint).Write();
         }
         /// <summary>
-        /// å½“æœåŠ¡ç«¯å‘é€Packetå®Œæ¯•ä¼šè°ƒç”¨æ­¤æ–¹æ³•
+        /// µ±·şÎñ¶Ë·¢ËÍPacketÍê±Ï»áµ÷ÓÃ´Ë·½·¨
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="e"></param>
@@ -69,7 +63,7 @@ namespace LW.NGSSocketServer
             _logger.Info().Message("send " + e.Status.ToString()).Property("ClientIP", connection.RemoteEndPoint).Write();
         }
         /// <summary>
-        /// å¤„ç†æœªçŸ¥çš„å‘½ä»¤
+        /// ´¦ÀíÎ´ÖªµÄÃüÁî
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="commandInfo"></param>
@@ -85,19 +79,19 @@ namespace LW.NGSSocketServer
 
     /// <summary>
     /// sum command
-    /// å…‰å¤§æ”¯ä»˜å¹³å°å‘½ä»¤å¤„ç†
+    /// ¹â´óÖ§¸¶Æ½Ì¨ÃüÁî´¦Àí
     /// </summary>
     public sealed class GDZFCommand : ICommand<AsyncBinaryXMLInnerCommandInfo>
     {
         /// <summary>
-        /// è¿”å›æœåŠ¡åç§°
+        /// ·µ»Ø·şÎñÃû³Æ
         /// </summary>
         public string Name
         {
             get { return NGSFields.CmdName; }
         }
         /// <summary>
-        /// æ‰§è¡Œå‘½ä»¤å¹¶è¿”å›ç»“æœ
+        /// Ö´ĞĞÃüÁî²¢·µ»Ø½á¹û
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="commandInfo"></param>

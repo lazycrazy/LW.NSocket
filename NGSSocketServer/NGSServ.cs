@@ -1,6 +1,5 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +22,12 @@ namespace LW.NGSSocketServer
         private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
         public static void Start()
         {
-            LW.NSocket.SocketBase.Log.Trace.Info("æœåŠ¡å¼€å§‹å¯åŠ¨...");
+            LW.NSocket.SocketBase.Log.Trace.Info("·şÎñ¿ªÊ¼Æô¶¯...");
             GDClient = new LW.NSocket.Client.AsyncBinaryXMLSocketGDClient<AsyncBinaryXMLResponse>(new AsyncBinaryXMLProtocol(), 8192, 8192, 3000, 3000 * 10, GDSerPoint, true);
             GDClient.OnSendSuccess += GDClient_OnSendSuccess;
             SocketServerManager.Init();
             SocketServerManager.Start();
-            LW.NSocket.SocketBase.Log.Trace.Info("æœåŠ¡å·²å¯åŠ¨ï¼");
+            LW.NSocket.SocketBase.Log.Trace.Info("·şÎñÒÑÆô¶¯£¡");
         }
 
         static void GDClient_OnSendSuccess(IConnection connection, Request<AsyncBinaryXMLResponse> request)
@@ -39,10 +38,10 @@ namespace LW.NGSSocketServer
 
         public static void Stop()
         {
-            LW.NSocket.SocketBase.Log.Trace.Info("æœåŠ¡å¼€å§‹å…³é—­...");
+            LW.NSocket.SocketBase.Log.Trace.Info("·şÎñ¿ªÊ¼¹Ø±Õ...");
             SocketServerManager.Stop();
             GDClient.Stop();
-            LW.NSocket.SocketBase.Log.Trace.Info("æœåŠ¡å·²å…³é—­ï¼");
+            LW.NSocket.SocketBase.Log.Trace.Info("·şÎñÒÑ¹Ø±Õ£¡");
         }
 
         public static void InnerReceiveMessage(IConnection connection, AsyncBinaryXMLInnerCommandInfo cmdInfo)
